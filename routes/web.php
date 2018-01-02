@@ -13,5 +13,5 @@
 
 Route::get('/', function () {
     //return view('welcome');
-    return view('welcome.php');
+    return 'Hello World!!!';
 });
