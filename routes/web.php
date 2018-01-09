@@ -14,3 +14,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('about', function () {
+    return view('about');
+});
+
+Route::get('/clients', function () {
+    $clients = App\Client::all();    
+    return view('clients.index', compact('clients'));
+})->middleware('auth');
+
+Route::get('/clients/{client}', function ($id) {
+    //$clients = App\Client::where('id', '=', $id)->get();
+    $client = App\Client::find($id);
+    return view('clients.show', compact('client'));
+})->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
