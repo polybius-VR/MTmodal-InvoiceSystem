@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 Use App\Client;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -21,17 +24,17 @@ class ClientController extends Controller
         $rules = array(
             'name'       => 'required'
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Request::all(), $rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('clients/create')
                 ->withErrors($validator)
-                ->withInput(Input::except('password'));
+                ->withInput(Request::except('password'));
         } else {
             // store
             $client = new Client;
-            $client->name       = Input::get('name');
+            $client->name       = Request::get('name');
             $client->save();
 
             // redirect
@@ -46,7 +49,31 @@ class ClientController extends Controller
     }
 
     public function edit(Client $client){
+        return view('clients.edit', compact('client'));
+    }
 
+    public function update(Client $client)
+    {
+        // validate
+        $rules = array(
+            'name'       => 'required'
+        );
+        $validator = Validator::make(Request::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('clients/' . $client->id . '/edit')
+                ->withErrors($validator)
+                ->withInput(Request::except('password'));
+        } else {
+            // store
+            $client->name       = Request::get('name');
+            $client->save();
+
+            // redirect
+            Session::flash('message', 'Successfully updated client!');
+            return Redirect::to('clients');
+        }
     }
 
     public function destroy(Client $client){

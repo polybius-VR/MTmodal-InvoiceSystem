@@ -24,15 +24,15 @@
                 <div class="panel-heading">Clients</div>
 
                 <div class="panel-body">
-                    
-                       <!-- if there are creation errors, they will show here -->
-                        
 
+                        <!-- if there are creation errors, they will show here -->
+                        {{ Html::ul($errors->all()) }}
+                    
                         {{ Form::open(array('url' => 'clients')) }}
 
                             <div class="form-group">
                                 {{ Form::label('name', 'Name') }}
-                                {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
+                                {{ Form::text('name', Request::old('name'), array('class' => 'form-control')) }}
                             </div>
 
                             {{ Form::submit('Create the Client!', array('class' => 'btn btn-primary')) }}
