@@ -37,6 +37,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/clients') }}">Clients</a></li>
+                        <li><a href="{{ url('/currencies') }}">Currencies</a></li>
+                        <li><a href="{{ url('/receivableInvoices') }}">Invoices</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

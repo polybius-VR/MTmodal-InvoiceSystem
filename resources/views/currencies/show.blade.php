@@ -5,11 +5,11 @@
 
     <nav class="navbar navbar-inverse">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('clients') }}">Client Alert</a>
+            <a class="navbar-brand" href="{{ URL::to('currencies') }}">Currency Alert</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a href="{{ URL::to('clients') }}">View All Clients</a></li>
-            <li><a href="{{ URL::to('clients/create') }}">Create a Client</a>
+            <li><a href="{{ URL::to('currencies') }}">View All Currencies</a></li>
+            <li><a href="{{ URL::to('currencies/create') }}">Create a Currency</a>
         </ul>
     </nav>
 
@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Clients</div>
+                <div class="panel-heading">Currencies</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -31,7 +31,7 @@
                     @endif
                     <div>
                     <ul>                
-                        <li> {{ $client->name }} </li>                    
+                        <li> {{ $currency->currency }} </li>                    
                     </ul>
                     </div>
                 </div>

@@ -23,7 +23,11 @@ Route::get('about', function () {
 
 //Route::get('clients/{client}', 'ClientController@show')->middleware('auth');
 
-Route::resource('clients', 'ClientController');
+Route::resource('clients', 'ClientController')->middleware('auth');
+
+Route::resource('currencies', 'CurrencyController')->middleware('auth');
+
+Route::resource('receivableInvoices', 'ReceivableInvoiceController')->middleware('auth');
 
 Auth::routes();
 
