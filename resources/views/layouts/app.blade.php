@@ -39,6 +39,9 @@
                         <li><a href="{{ url('/clients') }}">Clients</a></li>
                         <li><a href="{{ url('/currencies') }}">Currencies</a></li>
                         <li><a href="{{ url('/receivableInvoices') }}">Invoices</a></li>
+                        <li><a href="{{ url('/sales') }}">Sales</a></li>
+                        <li><a href="{{ url('/cashReceipts') }}">Cash Receipts</a></li>
+                        <li><a href="{{ url('/voidedInvoices') }}">Voided Invoices</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
