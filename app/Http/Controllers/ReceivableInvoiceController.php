@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\ReceivableInvoice;
 use App\Client;
 use App\Currency;
+use App\Sale;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
@@ -27,6 +28,7 @@ class ReceivableInvoiceController extends Controller
 
     public function store(){
         $rules = array(
+            'reference' => 'required|unique:sales',
             'number_id' => 'required|unique:receivable_invoices',
             'date_of_issue' => 'required',
             'client_id' => 'required',
@@ -42,7 +44,7 @@ class ReceivableInvoiceController extends Controller
                 ->withInput(Request::except('password'));
         } else {
             // store
-            $receivableInvoices = new ReceivableInvoice;
+            $receivableInvoices = new ReceivableInvoice;            
             $receivableInvoices->number_id = Request::get('number_id');
             $receivableInvoices->date_of_issue = Request::get('date_of_issue');
             //$receivableInvoices->client_id = Request::get('client_id');
@@ -51,6 +53,11 @@ class ReceivableInvoiceController extends Controller
             $client = Client::find(Request::get('client_id'));
             $receivableInvoices->client()->associate($client);
             $receivableInvoices->save();
+
+            $sales = new Sale;
+            $sales->reference = Request::get('reference');
+            $sales->invoice_id = Request::get('number_id');
+            $sales->save();
 
             // redirect
             Session::flash('message', 'Successfully created Invoice!');

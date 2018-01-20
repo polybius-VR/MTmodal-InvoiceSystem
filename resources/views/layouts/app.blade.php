@@ -42,12 +42,10 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/clients') }}">Clients</a></li>
-                        <li><a href="{{ url('/currencies') }}">Currencies</a></li>
-                        <li><a href="{{ url('/receivableInvoices') }}">Invoices</a></li>
-                        <li><a href="{{ url('/sales') }}">Sales</a></li>
-                        <li><a href="{{ url('/cashReceipts') }}">Cash Receipts</a></li>
-                        <li><a href="{{ url('/voidedInvoices') }}">Voided Invoices</a></li>
+                        <li><a href="{{ url('/clients') }}">Clientes</a></li>
+                        <li><a href="{{ url('/currencies') }}">Monedas</a></li>                        
+                        <li><a href="{{ url('/sales') }}">Ventas</a></li>                        
+                        <li><a href="{{ url('/voidedInvoices') }}">Facturas Anuladas</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

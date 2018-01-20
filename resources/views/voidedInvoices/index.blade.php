@@ -3,16 +3,6 @@
 @section('content')
 <div class="container">
 
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{ URL::to('voidedInvoices') }}">VoidedInvoice Alert</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li><a href="{{ URL::to('voidedInvoices') }}">View All VoidedInvoices</a></li>
-            <li><a href="{{ URL::to('voidedInvoices/create') }}">Create a VoidedInvoice</a>
-        </ul>
-    </nav>
-
     <!-- will be used to show any messages -->
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -21,7 +11,11 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">VoidedInvoices</div>
+                <nav class="navbar navbar-inverse">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ URL::to('voidedInvoices') }}">Facturas Anuladas</a>
+                    </div>
+                </nav>
 
                 <div class="panel-body">
                     
@@ -29,9 +23,9 @@
                             <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <td>Invoice</td>
-                                        <td>Date Voided</td>
-                                        <td>Actions</td>
+                                        <td>Factura</td>
+                                        <td>Fecha Anulada</td>
+                                        <td>Acciones</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +41,7 @@
                                             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
                                             <!-- show the nerd (uses the show method found at GET /nerds/{id} -->
-                                            <a class="btn btn-small btn-success" href="{{ URL::to('voidedInvoices/' . $value->id) }}">Show this VoidedInvoice</a>
+                                            <a class="btn btn-small btn-success" href="{{ URL::to('voidedInvoices/' . $value->id) }}">Ver Detalle</a>
 
                                         </td>
                                     </tr>

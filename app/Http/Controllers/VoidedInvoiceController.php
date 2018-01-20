@@ -21,6 +21,10 @@ class VoidedInvoiceController extends Controller
         return view('voidedInvoices.create', compact('invoices'));
     }
 
+    public function getIndex(ReceivableInvoice $invoice){
+        return view('voidedInvoices.create', compact('invoice'));
+    }
+
     public function store(){
         $rules = array(
             'invoice_id' => 'required|unique:voided_invoices',

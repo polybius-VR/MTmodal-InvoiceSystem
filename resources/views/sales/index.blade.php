@@ -14,6 +14,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ URL::to('sales') }}">Ventas</a>
             </div>
+            <ul class="nav navbar-nav">
+                <li><a href="{{ URL::to('receivableInvoices/create') }}">Facturar</a>
+            </ul>
             
         </nav>
 
@@ -28,7 +31,7 @@
                                 <th>CLIENTE</th>
                                 <th>MONEDA</th>
                                 <th>MONTO FACTURADO</th>
-                                <th></th>
+                                <th>ACCIONES</th>
                             </tr>
                         </thead>
                     </table>
@@ -56,7 +59,7 @@ $(document).ready(function() {
             {data: 'name', name: 'clients.name'},
             {data: 'currency', name: 'currencies.currency'},
             {data: 'amount', name: 'receivable_invoices.amount'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });

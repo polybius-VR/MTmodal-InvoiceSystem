@@ -29,8 +29,10 @@ Route::resource('currencies', 'CurrencyController')->middleware('auth');
 
 Route::resource('receivableInvoices', 'ReceivableInvoiceController')->middleware('auth');
 
+Route::get('cashReceipts/create/{invoice}', 'CashReceiptController@getIndex');
 Route::resource('cashReceipts', 'CashReceiptController')->middleware('auth');
 
+Route::get('voidedInvoices/create/{invoice}', 'VoidedInvoiceController@getIndex');
 Route::resource('voidedInvoices', 'VoidedInvoiceController')->middleware('auth');
 
 Auth::routes();
@@ -39,5 +41,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Get Data
 Route::get('sales/getdata', 'SaleController@getData')->name('sales/getdata');
-
 Route::resource('sales', 'SaleController')->middleware('auth');

@@ -30,12 +30,17 @@ class SaleController extends Controller
         ->join('receivable_invoices', 'sales.invoice_id', '=', 'receivable_invoices.number_id')
         ->join('clients', 'receivable_invoices.client_id', '=', 'clients.id')
         ->join('currencies', 'receivable_invoices.currency_id', '=', 'currencies.id')
-        ->select('sales.id', 'receivable_invoices.number_id', 'receivable_invoices.date_of_issue', 'sales.reference', 'clients.name', 'currencies.currency', 'receivable_invoices.amount');
+        ->leftjoin('voided_invoices', 'voided_invoices.invoice_id', '=', 'receivable_invoices.number_id')
+        ->select('sales.id', 'receivable_invoices.number_id', 'receivable_invoices.date_of_issue', 'sales.reference', 'clients.name', 'currencies.currency', 'receivable_invoices.amount')
+        ->whereNull('voided_invoices.invoice_id');
         return Datatables::of(
             $invoices
             )
             ->addColumn('action', function ($invoices) {
-                return '<a href="sales/'.$invoices->id.'" class="btn btn-xs btn-primary">Detalle</a>';
+                //return '<a href="sales/'.$invoices->id.'" class="btn btn-xs btn-primary">Detalle</a>';
+                return 
+                '<a href="cashReceipts/create/' . $invoices->number_id . '" class="btn btn-xs btn-primary">Cobrar</a>'
+                .' <a href="voidedInvoices/create/' . $invoices->number_id . '" class="btn btn-xs btn-primary">Anular</a>';                
             })
             ->make(true);
     }

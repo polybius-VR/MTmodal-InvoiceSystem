@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CashReceipt;
 use App\ReceivableInvoice;
+use App\Sale;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
@@ -19,6 +20,13 @@ class CashReceiptController extends Controller
     public function create(){
         $invoices = ReceivableInvoice::pluck('number_id', 'number_id');
         return view('cashReceipts.create', compact('invoices'));
+    }
+
+    public function getIndex(ReceivableInvoice $invoice){
+        //error_log($invoice->number_id . " " . $invoice->date_of_issue);
+        //$invoices = ReceivableInvoice::pluck('number_id', 'number_id');
+        $sale = Sale::get()->where('invoice_id', '=', $invoice->number_id)->first();
+        return view('cashReceipts.create', compact('invoice', 'sale'));
     }
 
     public function store(){
@@ -46,7 +54,7 @@ class CashReceiptController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created cashReceipt!');
-            return Redirect::to('cashReceipts');
+            return Redirect::to('sales');
         }
     }
 
