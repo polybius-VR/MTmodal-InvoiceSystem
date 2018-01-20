@@ -48,6 +48,11 @@
                             </div>
 
                             <div class="form-group">
+                                {{ Form::label('pending', 'Saldo Pendiente') }}
+                                {{ Form::text('pending', $invoice->amount, ['readonly']) }}
+                            </div>
+
+                            <div class="form-group">
                                 {{ Form::label('amount', 'Monto') }}
                                 {!! Form::number('amount',null,['class' => 'form-control','step'=>'any']) !!}
                             </div>

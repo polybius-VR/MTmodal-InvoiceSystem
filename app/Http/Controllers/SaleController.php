@@ -71,7 +71,7 @@ class SaleController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created Sale!');
-            return Redirect::to('sales');
+            return Redirect::to('sales.index');
         }
     }
 
