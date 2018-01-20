@@ -61,7 +61,7 @@ class ReceivableInvoiceController extends Controller
 
             // redirect
             Session::flash('message', 'Successfully created Invoice!');
-            return Redirect::to('receivableInvoices');
+            return Redirect::to('sales');
         }
     }
 
