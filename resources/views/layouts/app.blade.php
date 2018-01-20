@@ -46,6 +46,7 @@
                         <li><a href="{{ url('/currencies') }}">Monedas</a></li>                        
                         <li><a href="{{ url('/sales') }}">Ventas</a></li>                        
                         <li><a href="{{ url('/voidedInvoices') }}">Facturas Anuladas</a></li>
+                        <li><a href="{{ url('#reports') }}">Reportes</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
