@@ -29,8 +29,6 @@ Route::resource('currencies', 'CurrencyController')->middleware('auth');
 
 Route::resource('receivableInvoices', 'ReceivableInvoiceController')->middleware('auth');
 
-Route::resource('sales', 'SaleController')->middleware('auth');
-
 Route::resource('cashReceipts', 'CashReceiptController')->middleware('auth');
 
 Route::resource('voidedInvoices', 'VoidedInvoiceController')->middleware('auth');
@@ -38,3 +36,8 @@ Route::resource('voidedInvoices', 'VoidedInvoiceController')->middleware('auth')
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Get Data
+Route::get('sales/getdata', 'SaleController@getData')->name('sales/getdata');
+
+Route::resource('sales', 'SaleController')->middleware('auth');
