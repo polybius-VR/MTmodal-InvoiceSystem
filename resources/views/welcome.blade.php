@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <b>Sistema de Facturacion Multimodal</b>
+                    <b>Multimodal</b>
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ class CreateReceivableInvoicesTable extends Migration
             $table->foreign('client_id')->references('id')->on('clients');
             $table->integer('currency_id')->unsigned();
             $table->foreign('currency_id')->references('id')->on('currencies');
-            $table->decimal('amount', 8, 4);
+            $table->decimal('amount', 10, 2);
             $table->timestamps();
         });
     }
